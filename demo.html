@@ -1,0 +1,766 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style\style.css">
+
+
+
+    </head>
+    <body>
+
+        <div id="toolbar">
+
+            <div id="page-title">Connected to Binance</div>
+
+            <div id="div-variables">
+                <table>
+                    <tr>
+                        <td><span class="globvar-labels">Spend: </span><input type="text" class="globvars" id="target-spend-var" value="15"></td>
+                        <td><span class="globvar-labels">Stop: </span><input type="text" class="globvars" id="stop-price-var" value="0.987"></td>
+                        <td><span class="globvar-labels">Target: </span><input type="text" class="globvars" id="target-price-var" value="1.022"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+
+        <div id="page-workarea">
+
+
+
+
+            <!-- div id="right-side-menu">
+
+
+                <div id="div-patterns">
+                    <table id="patterns" cellspacing="0">
+                        <tr class="pattern-header">
+                            <th class="pattern-header-cell" colspan="16">Top Patterns (1m for 15 mins)</th>
+                        </tr>
+                        <tr class="pattern-header">
+                            <th></th><th>01</th><th>'</th><th>'</th><th>'</th><th>05</th><th>'</th><th>'</th><th>'</th><th>'</th><th>10</th><th>'</th><th>'</th><th>'</th><th>'</th><th>15</th>
+                        </tr>
+                    </table>
+                </div>
+                
+            </div -->
+
+
+            <div id="middle-area">
+
+
+<!-- Watchlist -->
+
+<div class="div_watchlist" id="div_watchlist_main">
+    <table class="table_watchlist" id="table_watchlist">
+        <tr>
+            <td class="td_title" colspan="2"></td>
+            <td class="td_title" colspan="5">Price Change %</td>
+            <td class="td_title" colspan="5">Max Price Swing (within 1m)</td>
+            <td class="td_title" colspan="2">RSI</td>
+            <td class="td_title" colspan="1"></td>
+        </tr>
+        <tr>
+            <th>Symbol</th><th>Price</th>
+            <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+            <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+            <th>(1,14)</th><th>(15,14)</th><th></th>
+        </tr>
+        <tr>
+            <td class="watchlist_symbol"    id="watchlist_symbol_btc">NA</td>
+            <td class="watchlist_price"     id="watchlist_price_btc">-.--</td>
+            <td class="watchlist_average24" id="watchlist_average24_btc">-.--</td>
+            <td class="watchlist_average60" id="watchlist_average60_btc">-.--</td>
+            <td class="watchlist_average30" id="watchlist_average30_btc">-.--</td>
+            <td class="watchlist_average15" id="watchlist_average15_btc">-.--</td>
+            <td class="watchlist_average05" id="watchlist_average05_btc">-.--</td>
+            <td class="watchlist_swing60"   id="watchlist_swings60_btc">-.--</td>
+            <td class="watchlist_swing45"   id="watchlist_swings45_btc">-.--</td>
+            <td class="watchlist_swing30"   id="watchlist_swings30_btc">-.--</td>
+            <td class="watchlist_swing15"   id="watchlist_swings15_btc">-.--</td>
+            <td class="watchlist_swing05"   id="watchlist_swings05_btc">-.--</td>
+            <td class="watchlist_rsi01"     id="watchlist_rsi01_btc">-.--</td>
+            <td class="watchlist_rsi15"     id="watchlist_rsi15_btc">-.--</td>
+            <td class="watchlist_buttons"   id="watchlist_buttons_btc"><button onclick="triggerBuy('BTCUSDT')">buy BTC</button></td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+
+
+<!-- BTC -->
+                <div class="div-symbol" id="div-btc-prices">
+                    <div class="symbol-name" id="btc-symbol"></div>
+                    <div class="symbol-price" id="btc-price"></div>
+                    <div class="symbol-change" id="btc-changes">
+                        <table class="table-symbol-changes" id="table-btc-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_btc">-.--</td>
+                                <td class="average_percent" id="average60_btc">-.--</td>
+                                <td class="average_percent" id="average30_btc">-.--</td>
+                                <td class="average_percent" id="average15_btc">-.--</td>
+                                <td class="average_percent" id="average05_btc">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="btc-swings">
+                        <table class="table-symbol-swings" id="table-btc-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_btc">-.--</td>
+                                <td class="swing_percent" id="swings45_btc">-.--</td>
+                                <td class="swing_percent" id="swings30_btc">-.--</td>
+                                <td class="swing_percent" id="swings15_btc">-.--</td>
+                                <td class="swing_percent" id="swings05_btc">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="btc-indicators">
+                        <table class="table-symbol-indicators" id="table-btc-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="btc-rsi">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="btc-controls"><button onclick="triggerBuy('BTCUSDT')">buy BTC</button></div>
+                </div>
+
+<!-- BTCUP -->
+<div class="div-symbol" id="div-btcup-prices">
+    <div class="symbol-name" id="btcup-symbol"></div>
+    <div class="symbol-price" id="btcup-price"></div>
+    <div class="symbol-change" id="btcup-changes">
+        <table class="table-symbol-changes" id="table-btcup-changes">
+            <tr>
+                <td class="td-title" colspan="5">Price Change %</td>
+            </tr>
+            <tr>
+                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+            </tr>
+            <tr>
+                <td class="average_percent" id="average24_btcup">-.--</td>
+                <td class="average_percent" id="average60_btcup">-.--</td>
+                <td class="average_percent" id="average30_btcup">-.--</td>
+                <td class="average_percent" id="average15_btcup">-.--</td>
+                <td class="average_percent" id="average05_btcup">-.--</td>
+            </tr>
+        </table>
+    </div>
+    <div class="symbol-swings" id="btcup-swings">
+        <table class="table-symbol-swings" id="table-btcup-swings">
+            <tr>
+                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+            </tr>
+            <tr>
+                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+            </tr>
+            <tr>
+                <td class="swing_percent" id="swings60_btcup">-.--</td>
+                <td class="swing_percent" id="swings45_btcup">-.--</td>
+                <td class="swing_percent" id="swings30_btcup">-.--</td>
+                <td class="swing_percent" id="swings15_btcup">-.--</td>
+                <td class="swing_percent" id="swings05_btcup">-.--</td>
+            </tr>
+        </table>
+    </div>
+    <div class="symbol-indicators" id="btcup-indicators">
+        <table class="table-symbol-indicators" id="table-btcup-indicators">
+            <tr>
+                <td class="td-title" colspan="5">Indicators</td>
+            </tr>
+            <tr>
+                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+            </tr>
+            <tr>
+                <td class="indicators" id="rsi_btcup">-.--</td>
+                <td class="indicators" id="unknown">-.--</td>
+                <td class="indicators" id="unknown">-.--</td>
+                <td class="indicators" id="unknown">-.--</td>
+                <td class="indicators" id="unknown">-.--</td>
+            </tr>
+        </table>
+    </div>
+    <div class="symbol-controls" id="btcup-controls"><button onclick="triggerBuy('BTCUPUSDT')">buy BTCUP</button></div>
+</div>
+
+<!-- ADA -->
+                <div class="div-symbol" id="div-ada-prices">
+                    <div class="symbol-name" id="ada-symbol"></div>
+                    <div class="symbol-price" id="ada-price"></div>
+                    <div class="symbol-change" id="ada-changes">
+                        <table class="table-symbol-changes" id="table-ada-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_ada">-.--</td>
+                                <td class="average_percent" id="average60_ada">-.--</td>
+                                <td class="average_percent" id="average30_ada">-.--</td>
+                                <td class="average_percent" id="average15_ada">-.--</td>
+                                <td class="average_percent" id="average05_ada">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="ada-swings">
+                        <table class="table-symbol-swings" id="table-ada-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_ada">-.--</td>
+                                <td class="swing_percent" id="swings45_ada">-.--</td>
+                                <td class="swing_percent" id="swings30_ada">-.--</td>
+                                <td class="swing_percent" id="swings15_ada">-.--</td>
+                                <td class="swing_percent" id="swings05_ada">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="ada-indicators">
+                        <table class="table-symbol-indicators" id="table-ada-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="rsi_ada">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="ada-controls"><button onclick="triggerBuy('ADAUSDT')">buy ADA</button></div>
+                </div>
+
+<!-- EOS -->
+                <div class="div-symbol" id="div-eos-prices">
+                    <div class="symbol-name" id="eos-symbol"></div>
+                    <div class="symbol-price" id="eos-price"></div>
+                    <div class="symbol-change" id="eos-changes">
+                        <table class="table-symbol-changes" id="table-eos-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_eos">-.--</td>
+                                <td class="average_percent" id="average60_eos">-.--</td>
+                                <td class="average_percent" id="average30_eos">-.--</td>
+                                <td class="average_percent" id="average15_eos">-.--</td>
+                                <td class="average_percent" id="average05_eos">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="eos-swings">
+                        <table class="table-symbol-swings" id="table-eos-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_eos">-.--</td>
+                                <td class="swing_percent" id="swings45_eos">-.--</td>
+                                <td class="swing_percent" id="swings30_eos">-.--</td>
+                                <td class="swing_percent" id="swings15_eos">-.--</td>
+                                <td class="swing_percent" id="swings05_eos">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="eos-indicators">
+                        <table class="table-symbol-indicators" id="table-eos-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="rsi_eos">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="eos-controls"><button onclick="triggerBuy('EOSUSDT')">buy EOS</button></div>
+                </div>
+
+<!-- TRX -->
+                <div class="div-symbol" id="div-trx-prices">
+                    <div class="symbol-name" id="trx-symbol"></div>
+                    <div class="symbol-price" id="trx-price"></div>
+                    <div class="symbol-change" id="trx-changes">
+                        <table class="table-symbol-changes" id="table-trx-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_trx">-.--</td>
+                                <td class="average_percent" id="average60_trx">-.--</td>
+                                <td class="average_percent" id="average30_trx">-.--</td>
+                                <td class="average_percent" id="average15_trx">-.--</td>
+                                <td class="average_percent" id="average05_trx">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="trx-swings">
+                        <table class="table-symbol-swings" id="table-trx-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_trx">-.--</td>
+                                <td class="swing_percent" id="swings45_trx">-.--</td>
+                                <td class="swing_percent" id="swings30_trx">-.--</td>
+                                <td class="swing_percent" id="swings15_trx">-.--</td>
+                                <td class="swing_percent" id="swings05_trx">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="trx-indicators">
+                        <table class="table-symbol-indicators" id="table-trx-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="rsi_trx">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="trx-controls"><button onclick="triggerBuy('TRXUSDT')">buy TRON</button></div>
+                </div>
+
+<!-- ETH -->
+                <div class="div-symbol" id="div-eth-prices">
+                    <div class="symbol-name" id="eth-symbol"></div>
+                    <div class="symbol-price" id="eth-price"></div>
+                    <div class="symbol-change" id="eth-changes">
+                        <table class="table-symbol-changes" id="table-eth-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_eth">-.--</td>
+                                <td class="average_percent" id="average60_eth">-.--</td>
+                                <td class="average_percent" id="average30_eth">-.--</td>
+                                <td class="average_percent" id="average15_eth">-.--</td>
+                                <td class="average_percent" id="average05_eth">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="eth-swings">
+                        <table class="table-symbol-swings" id="table-eth-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_eth">-.--</td>
+                                <td class="swing_percent" id="swings45_eth">-.--</td>
+                                <td class="swing_percent" id="swings30_eth">-.--</td>
+                                <td class="swing_percent" id="swings15_eth">-.--</td>
+                                <td class="swing_percent" id="swings05_eth">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="eth-indicators">
+                        <table class="table-symbol-indicators" id="table-eth-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="rsi_eth">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="eth-controls"><button onclick="triggerBuy('ETHUSDT')">buy ETH</button></div>
+                </div>
+
+<!-- NEO -->
+                <div class="div-symbol" id="div-neo-prices">
+                    <div class="symbol-name" id="neo-symbol"></div>
+                    <div class="symbol-price" id="neo-price"></div>
+                    <div class="symbol-change" id="neo-changes">
+                        <table class="table-symbol-changes" id="table-neo-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_neo">-.--</td>
+                                <td class="average_percent" id="average60_neo">-.--</td>
+                                <td class="average_percent" id="average30_neo">-.--</td>
+                                <td class="average_percent" id="average15_neo">-.--</td>
+                                <td class="average_percent" id="average05_neo">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="neo-swings">
+                        <table class="table-symbol-swings" id="table-neo-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_neo">-.--</td>
+                                <td class="swing_percent" id="swings45_neo">-.--</td>
+                                <td class="swing_percent" id="swings30_neo">-.--</td>
+                                <td class="swing_percent" id="swings15_neo">-.--</td>
+                                <td class="swing_percent" id="swings05_neo">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="neo-indicators">
+                        <table class="table-symbol-indicators" id="table-neo-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="rsi_neo">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="neo-controls"><button onclick="triggerBuy('NEOUSDT')">buy NEO</button></div>
+                </div>
+
+<!-- LTC -->
+                <div class="div-symbol" id="div-ltc-prices">
+                    <div class="symbol-name" id="ltc-symbol"></div>
+                    <div class="symbol-price" id="ltc-price"></div>
+                    <div class="symbol-change" id="ltc-changes">
+                        <table class="table-symbol-changes" id="table-ltc-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_ltc">-.--</td>
+                                <td class="average_percent" id="average60_ltc">-.--</td>
+                                <td class="average_percent" id="average30_ltc">-.--</td>
+                                <td class="average_percent" id="average15_ltc">-.--</td>
+                                <td class="average_percent" id="average05_ltc">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="ltc-swings">
+                        <table class="table-symbol-swings" id="table-ltc-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_ltc">-.--</td>
+                                <td class="swing_percent" id="swings45_ltc">-.--</td>
+                                <td class="swing_percent" id="swings30_ltc">-.--</td>
+                                <td class="swing_percent" id="swings15_ltc">-.--</td>
+                                <td class="swing_percent" id="swings05_ltc">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="ltc-indicators">
+                        <table class="table-symbol-indicators" id="table-ltc-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="rsi_ltc">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="ltc-controls"><button onclick="triggerBuy('LTCUSDT')">buy LTC</button></div>
+                </div>
+
+<!-- BNB -->
+                <div class="div-symbol" id="div-bnb-prices">
+                    <div class="symbol-name" id="bnb-symbol"></div>
+                    <div class="symbol-price" id="bnb-price"></div>
+                    <div class="symbol-change" id="bnb-changes">
+                        <table class="table-symbol-changes" id="table-bnb-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_bnb">-.--</td>
+                                <td class="average_percent" id="average60_bnb">-.--</td>
+                                <td class="average_percent" id="average30_bnb">-.--</td>
+                                <td class="average_percent" id="average15_bnb">-.--</td>
+                                <td class="average_percent" id="average05_bnb">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="bnb-swings">
+                        <table class="table-symbol-swings" id="table-bnb-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_bnb">-.--</td>
+                                <td class="swing_percent" id="swings45_bnb">-.--</td>
+                                <td class="swing_percent" id="swings30_bnb">-.--</td>
+                                <td class="swing_percent" id="swings15_bnb">-.--</td>
+                                <td class="swing_percent" id="swings05_bnb">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="bnb-indicators">
+                        <table class="table-symbol-indicators" id="table-bnb-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="rsi_bnb">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="bnb-controls"><button onclick="triggerBuy('BNBUSDT')">buy BNB</button></div>
+                </div>
+
+<!-- KAVA -->
+                <div class="div-symbol" id="div-kava-prices">
+                    <div class="symbol-name" id="kava-symbol"></div>
+                    <div class="symbol-price" id="kava-price"></div>
+                    <div class="symbol-change" id="kava-changes">
+                        <table class="table-symbol-changes" id="table-kava-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_kava">-.--</td>
+                                <td class="average_percent" id="average60_kava">-.--</td>
+                                <td class="average_percent" id="average30_kava">-.--</td>
+                                <td class="average_percent" id="average15_kava">-.--</td>
+                                <td class="average_percent" id="average05_kava">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="kava-swings">
+                        <table class="table-symbol-swings" id="table-kava-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_kava">-.--</td>
+                                <td class="swing_percent" id="swings45_kava">-.--</td>
+                                <td class="swing_percent" id="swings30_kava">-.--</td>
+                                <td class="swing_percent" id="swings15_kava">-.--</td>
+                                <td class="swing_percent" id="swings05_kava">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="kava-indicators">
+                        <table class="table-symbol-indicators" id="table-kava-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="rsi_kava">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="kava-controls"><button onclick="triggerBuy('KAVAUSDT')">buy KAVA</button></div>
+    
+                </div>
+
+<!-- KNC -->
+                <div class="div-symbol" id="div-knc-prices">
+                    <div class="symbol-name" id="knc-symbol"></div>
+                    <div class="symbol-price" id="knc-price"></div>
+                    <div class="symbol-change" id="knc-changes">
+                        <table class="table-symbol-changes" id="table-knc-changes">
+                            <tr>
+                                <td class="td-title" colspan="5">Price Change %</td>
+                            </tr>
+                            <tr>
+                                <th>24h</th><th>1h</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="average_percent" id="average24_knc">-.--</td>
+                                <td class="average_percent" id="average60_knc">-.--</td>
+                                <td class="average_percent" id="average30_knc">-.--</td>
+                                <td class="average_percent" id="average15_knc">-.--</td>
+                                <td class="average_percent" id="average05_knc">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-swings" id="knc-swings">
+                        <table class="table-symbol-swings" id="table-knc-swings">
+                            <tr>
+                                <td class="td-title" colspan="5">Max Price Swing (within 1m)</td>
+                            </tr>
+                            <tr>
+                                <th>1hr</th><th>45m</th><th>30m</th><th>15m</th><th>5m</th>
+                            </tr>
+                            <tr>
+                                <td class="swing_percent" id="swings60_knc">-.--</td>
+                                <td class="swing_percent" id="swings45_knc">-.--</td>
+                                <td class="swing_percent" id="swings30_knc">-.--</td>
+                                <td class="swing_percent" id="swings15_knc">-.--</td>
+                                <td class="swing_percent" id="swings05_knc">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-indicators" id="knc-indicators">
+                        <table class="table-symbol-indicators" id="table-knc-indicators">
+                            <tr>
+                                <td class="td-title" colspan="5">Indicators</td>
+                            </tr>
+                            <tr>
+                                <th>RSI</th><th>NA</th><th>NA</th><th>NA</th><th>NA</th>
+                            </tr>
+                            <tr>
+                                <td class="indicators" id="rsi_knc_2">-.--</td>
+                                <td class="indicators" id="rsi_knc_1">-.--</td>
+                                <td class="indicators" id="rsi_knc">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                                <td class="indicators" id="unknown">-.--</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="symbol-controls" id="knc-controls"><button onclick="triggerBuy('KNCUSDT')">buy KNC</button></div>
+    
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div id="div-orders">
+            <table id="orders" cellspacing="0">
+                <tr class="order-header">
+                    <th colspan="4" class="order-header-order">Order</th>
+                    <th colspan="7" class="order-header-trade">Trade</th>
+                </tr>
+                <tr class="order-header">
+                    <th>Id</th>
+                    <th>Pair</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Stop</th>
+                    <th>Current</th>
+                    <th>Target</th>
+                    <th class="orders-progress">Progress</th>
+                    <th>Status</th>
+                    <th>Profit</th>
+                </tr>
+            </table>
+        </div>
+
+        <script src="demo.js"></script>
+        <!-- script src="patterns.js"></script -->
+    </body>
+</html>

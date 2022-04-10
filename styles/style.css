@@ -1,0 +1,208 @@
+body {
+    background-color: #333333;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#page-title {color: orange;}
+p {color: orange;}
+
+#toolbar {
+    width: 100%;
+    height: 50px;
+}
+
+#page-title {
+    float: left;
+    width: 50%;
+}
+
+#div-variables {
+    float: right;
+    width: 50%;
+}
+
+.globvars[type=text] {
+    width: 50pt;
+    text-align: center;
+    background-color: grey;
+    margin: 0em;
+    font: 400 13.3333px Courier;
+    font-weight: bold;
+    border: 2px solid orange;
+    border-radius: 4px;
+
+}
+
+.globvar-labels {
+    color: orange;
+}
+
+#page-workarea {
+    overflow: hidden;
+    float: left;
+    width: 100%;
+}
+
+#left-side-menu {
+    float: left;
+    visibility: hidden;
+}
+
+#left-side-menu ul, li {
+    margin: 0;
+    padding: 0;
+
+}
+
+#right-side-menu {
+    visibility: hidden;
+    float: right;
+    width: 300px;
+}
+
+
+
+.div-symbol  {
+    float: left;
+    width: 270px;
+    padding: 10px;
+}
+
+
+.symbol-name, .symbol-price {
+    color: lightgrey;
+    width: 50%;
+}
+
+.symbol-name {
+    float: left;
+    text-align: left;
+    font-weight: bold;
+}
+
+.symbol-price {
+    float: right;
+    text-align: right;
+    font-size: 12pt;
+}
+
+
+
+
+
+.table-symbol-changes, .table-symbol-swings, .table-symbol-indicators {
+    font-size: 9pt;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(173, 173, 173);
+}
+
+.average_percent, .swing_percent {
+    width: 55px;
+    text-align: center;
+}
+
+.td-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    width: 100%;
+    color: rgb(173, 173, 173);
+    font-size: 9pt;
+    text-align: left;
+}
+
+
+.symbol-controls {
+    text-align: right;
+    padding-top: 5px;
+}
+
+.symbol-controls button {
+        text-align: center;
+        background-color: grey;
+        margin: 0em;
+        font: 400 13.3333px Courier;
+        font-weight: bold;
+        border: 2px solid orange;
+        border-radius: 4px;
+}
+
+
+#orders th {
+    font-weight: bold;
+    font-size: 10pt;
+    color: rgb(173, 173, 173);
+}
+
+#orders {
+    color: darksalmon;
+    
+}
+
+#orders tr:nth-child(even) {
+    background-color: #202020;
+}
+
+#orders tr.order-header {
+    background-color: #202020;
+}
+
+#orders td.order-header-trade, td.order-header-order {
+    margin-left: 2px;
+    text-align: left;
+}
+
+#orders td, th {
+    width: 80px;
+    text-align: center;
+    font-size: 9pt;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+th.orders-progress  {
+    width: 175px;
+}
+
+#patterns table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+#pattern-header {
+    font-weight: bold;
+    color: darkorange;
+    background-color: #333333;
+}
+
+
+
+
+#patterns tr, td, th {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#patterns td {
+    width: 20px;
+    text-align: center;
+}
+
+th.pattern-header-cell {
+    font-weight: bold;
+    color: darksalmon;
+    text-align: left;
+}
+
+#patterns tr:nth-child(even) {
+    background-color: #202020;
+}
+
+.reached-target-price {
+    background-color: green;
+}
+
+.posClass {color : green;}
+.negClass {color : red;}
+.zerClass {color : white;}
